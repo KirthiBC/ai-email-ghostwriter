@@ -1,0 +1,428 @@
+/* body.generator-bg {
+  background: url('/email.jpg') center center / cover no-repeat fixed !important;
+  margin: 0;
+  padding: 0;
+} */
+body.history-bg::before {
+  content: "";
+  position: fixed;
+  inset: -20px;
+  background: var(--bg-image) center center / cover no-repeat;
+  filter: blur(8px) brightness(0.85);
+  z-index: -1;
+}
+
+/* ===== BLURRED BODY BACKGROUND ===== */
+body.generator-bg::before {
+  content: "";
+  position: fixed;
+  inset: -20px; /* Expands past edges so blur doesn't leave white borders */
+  background: var(--bg-image) center center / cover no-repeat; /* Use src path if using imports */
+  filter: blur(8px) brightness(0.85);
+  z-index: -1;
+}
+/* ===== BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.generator-wrapper{
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* width:100vw; */
+  /* position: relative;
+  overflow: hidden; */
+  /* background: #f0f4f8; */
+}
+
+/* ===== BACKGROUND LAYERS ===== */
+/* .generator-wrapper .img {
+  position: fixed;
+  top: 0; left: 0; right:0; bottom:0;
+  width: 100vh; height: 100vh;
+  background: url('email.jpg') center center / cover no-repeat;
+  filter: blur(6px) brightness(0.85);
+  z-index: -1;
+} */
+
+/* .bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url('history.webp') center center / cover no-repeat;
+  filter: blur(8px) brightness(0.85);
+  z-index: -1;
+} */
+
+/* ===== MAIN CONTAINER ===== */
+.generator-wrapper .container {
+  position:relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 36px 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  width: 620px;
+  max-height: 92vh;
+  max-width: 90vw;
+  overflow-y: auto;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1 {
+  color: #1a2d44;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.welcome {
+  color: #667788;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+/* ===== FORM ELEMENTS ===== */
+.generator-wrapper textarea,
+.generator-wrapper select {
+  width: 100%;
+  margin-top: 12px;
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1px solid #d0d7de;
+  background: #f8fafc;
+  color: #1a2d44;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+textarea:focus,
+select:focus {
+  border-color: #3b82c4;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 196, 0.15);
+}
+
+/* ===== PRIMARY BUTTON ===== */
+.generator-wrapper button {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #1a5fa0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background: #134a80;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ===== RESULT BOX ===== */
+.generator-wrapper #result {
+  margin-top: 18px;
+  background: #f0f5fb;
+  border: 1px solid #cddcee;
+  padding: 16px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+ 
+  text-align: left;
+  font-size: 14px;
+  color: #2c3e50;
+  line-height: 1.65;
+}
+
+/* ===== NAV BUTTONS ===== */
+.generator-wrapper .nav-buttons {
+  margin-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.generator-wrapper .nav-btn {
+  flex: 1;
+  margin: 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
+
+.nav-btn.secondary {
+  background: #6b7280;
+  color: #fff;
+}
+
+.nav-btn.secondary:hover {
+  background: #4b5563;
+}
+
+.nav-btn.danger {
+  background: #b83535;
+  color: #fff;
+}
+
+.nav-btn.danger:hover {
+  background: #962929;
+}
+
+/* ===== HISTORY CARDS ===== */
+.history-container {
+  margin-top: 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.email-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  text-align: left;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.email-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.email-card h3 {
+  margin: 0 0 6px;
+  color: #1a2d44;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.email-card p {
+  margin: 6px 0;
+  color: #4a5568;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.date {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+/* ===== MODAL ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  background: #fff;
+  padding: 36px 28px 24px;
+  border-radius: 14px;
+  width: 82%;
+  max-height: 82vh;
+  max-width: 700px;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+#modalContent {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #2c3e50;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #64748b;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 1010;
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.close:hover {
+  color: #dc2626;
+  transform: scale(1.2);
+}
+
+/* ===== SEARCH & FILTERS ===== */
+#searchBox {
+  width: 260px;
+  padding: 10px 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f8fafc;
+  color: #1a2d44;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#searchBox:focus {
+  border-color: #3b82c4;
+  box-shadow: 0 0 0 3px rgba(59, 130, 196, 0.15);
+}
+
+.filters button {
+  background: #64748b;
+  color: #fff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  width: auto;
+  margin-top: 0;
+}
+
+.filters button:hover {
+  background: #475569;
+}
+
+/* ===== CARD ACTION BUTTONS ===== */
+.generator-wrapper .view-btn {
+  background: transparent;
+  color: rgb(10, 52, 129);
+  border: 1.5px solid rgb(112, 151, 223);
+  padding: 8px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  width: auto;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.generator-wrapper .view-btn:hover {
+  background: #235b93;
+  color: white;
+}
+
+.generator-wrapper .delete-btn {
+  background: transparent;
+  color: #b83535;
+  border: 1.5px solid #f1a0a0;
+  padding: 8px 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+  width: auto;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.generator-wrapper .delete-btn:hover {
+  background: #b83535;
+  color: #fff;
+  border-color: #b83535;
+}
+
+/* ===== TOAST ===== */
+.toast {
+  visibility: hidden;
+  min-width: 240px;
+  background: #1e293b;
+  color: #f1f5f9;
+  text-align: center;
+  border-radius: 10px;
+  padding: 14px 20px;
+  position: fixed;
+  z-index: 2000;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  font-size: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.toast.show {
+  visibility: visible;
+  animation: fadein 0.4s ease, fadeout 0.4s ease 2.5s;
+}
+
+@keyframes fadein {
+  from { bottom: 10px; opacity: 0; }
+  to   { bottom: 32px; opacity: 1; }
+}
+
+@keyframes fadeout {
+  from { bottom: 32px; opacity: 1; }
+  to   { bottom: 10px; opacity: 0; }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 500px) {
+  .container {
+    width: 92%;
+    padding: 24px 18px;
+  }
+
+  #searchBox {
+    width: 100%;
+  }
+}
+
+.card-buttons {
+  display: flex;
+  align-items: center;
+
+  gap:20px;
+  margin-top: 12px;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
