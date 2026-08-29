@@ -69,7 +69,7 @@ function History() {
             return;
 
         try {
-            const response = await fetch(`http://localhost:5000/history/${id}`, {
+            const response = await fetch(`${API_URL}/history/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": localStorage.getItem("token") || "",
