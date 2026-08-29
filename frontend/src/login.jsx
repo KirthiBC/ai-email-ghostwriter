@@ -7,6 +7,7 @@ function Login() {
   const [password,setPassword]=useState("");
   const [errorMsg,setErrorMsg]=useState("");
   const navigate=useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   useEffect(()=> {
     if(localStorage.getItem("token")) {
@@ -23,7 +24,7 @@ function Login() {
     }
 
     try{
-      const res=await fetch("http://localhost:5000/login1", {
+      const res=await fetch(`${API_URL}/login1`, {
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({email,password}),

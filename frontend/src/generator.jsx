@@ -11,7 +11,7 @@ function Generator() {
   const [toastMsg, setToastMsg]=useState("");
   const [generatedEmail, setGeneratedEmail] = useState("");
   const navigate=useNavigate();
-
+ const API_URL=import.meta.env.VITE_API_URL || "http://localhost:5000";
 //   useEffect(()=> {
 //     document.body.classList.add("generator.bg");
 //     return()=> {
@@ -43,7 +43,7 @@ useEffect(() => {
     setLoading(true);
 
     try{
-        const response=await fetch("http://localhost:5000/generate-email", {
+        const response=await fetch(`${API_URL}/generate-email`, {
             method: "POST",
             headers: {
                 "Content-Type":"application/json",

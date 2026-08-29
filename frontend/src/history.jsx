@@ -9,6 +9,7 @@ function History() {
     const [tone, setTone] = useState("");
     const [selectedEmail, setSelectedEmail] = useState(null);
     const navigate = useNavigate();
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
     useEffect(()=> {
         document.body.style.setProperty("--bg-image",`url(${historyBg})`);
@@ -26,7 +27,7 @@ function History() {
             if (keyword) params.append("keyword", keyword);
             if (tone && tone !== "All") params.append("tone", tone);
 
-            let url = "http://localhost:5000/history";
+            let url =`${API_URL}/history` ;
             if (params.toString()) url += `?${params.toString()}`;
 
             const res = await fetch(url, {
